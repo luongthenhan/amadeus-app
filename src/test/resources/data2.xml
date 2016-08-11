@@ -1,0 +1,10 @@
+<data>
+    <Person age="17" sex="FEMALE" firstName="Sarah"/>
+    <Person age="43" sex="MALE" firstName="Jean"/>
+    <Person age="18" sex="FEMALE" firstName="Caroline"/>
+    <Person age="60" sex="MALE" firstName="Denis"/>
+    <Person age="18" sex="MALE" firstName="Alban"/>
+    <Person age="67" sex="FEMALE" firstName="Meghana"/>
+    <Person age="62" sex="MALE" firstName="Nicolas"/>
+    <Person age="51" sex="MALE" firstName="Boubacar"/>
+</data>
