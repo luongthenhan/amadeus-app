@@ -4,6 +4,8 @@ import com.example.amadeus.app.entity.AgeRange;
 import com.example.amadeus.app.entity.EntityList;
 import com.example.amadeus.app.entity.Person;
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +33,8 @@ public class RestController {
      * A POST method for calculating the average age of people grouped by age
      * range.
      *
-     * @param filePath a file path of a XML file. This is the input of web
-     * service.
+     * @param filePath a file path or URL of a XML file. This is the input of
+     * web service.
      * @param response the response of web service
      * @return a list of average ages of people grouped by age range in JSON
      * format.
@@ -46,8 +48,12 @@ public class RestController {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(EntityList.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            peopleList = (EntityList<Person>) unmarshaller.unmarshal(new File(filePath));
-        } catch (JAXBException e) {
+            if (filePath.startsWith("http") || filePath.startsWith("https")) {
+                peopleList = (EntityList<Person>) unmarshaller.unmarshal(new URL(filePath));
+            } else {
+                peopleList = (EntityList<Person>) unmarshaller.unmarshal(new File(filePath));
+            }
+        } catch (JAXBException | MalformedURLException e) {
             System.err.println(e.getMessage());
         }
 
