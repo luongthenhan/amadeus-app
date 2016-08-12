@@ -121,8 +121,8 @@
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>1.1</version>
                 <configuration>
-					<!-- Depend on your Tomcat server -->
-                    <url>http://localhost:8080/manager/text</url>
+                    <!-- Depend on your Tomcat server -->
+                    <url>http://localhost:8081/manager/text</url>
                     <server>TomcatServer</server>
                     <path>/amadeus-app</path>
                 </configuration>
