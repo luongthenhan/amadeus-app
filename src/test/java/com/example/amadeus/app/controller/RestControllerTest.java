@@ -34,7 +34,7 @@ public class RestControllerTest {
     private RestController restController;
 
     private final String DATA_FILE = "data.xml";
-    private final String DATA_FILE2 = "data2.xml";
+    private final String DATA_URL = "http://hcmc1.vn/data2.xml";
 
     private final String FILE_NOT_FOUND = "file";
 
@@ -81,14 +81,15 @@ public class RestControllerTest {
     }
 
     /**
-     * Test of a lack of age range, of class PersonController.
+     * Test of a lack of age range and reading XML file from URL. Internet
+     * connection required!
      *
      * @throws java.lang.Exception
      */
     @Test
     public void testCalculateAverage2() throws Exception {
         this.mockMvc.perform(
-                post("/average").content(loader.getResource("").toString().substring("file:/".length()) + DATA_FILE2)
+                post("/average").content(DATA_URL)
                 .contentType(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
